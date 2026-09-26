@@ -8,7 +8,7 @@ const Footer = () => {
       <Container>
         <div className="flex justify-between items-center">
           <div className="">
-            <Image src="/footer.png" height={20} width={71} ></Image>
+            <Image src="/footer.png" height={20} width={71} alt="footer logo"></Image>
           </div>
           <div className="">
             <p className='font-normal text-[12px] text-[#6B7280]'>© 2026 FitLog — Workout Library. Train hard, log honest.</p>

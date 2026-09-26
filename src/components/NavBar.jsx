@@ -10,7 +10,7 @@ const NavBar = () => {
     const pathname = usePathname()
   return (
     <div className="">
-
+   
     <Container>
    <div className="navbar ">
   <div className="navbar-start">

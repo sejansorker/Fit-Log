@@ -18,7 +18,7 @@ into today's plan, and watch the week's work add up.</p>
           </div>
           </div>
           <div className="w-1/3 flex justify-end">
-          <Image src="/banner.png" height={334} width={334} />
+          <Image src="/banner.png" height={334} width={334} alt="Workout banner"  />
           </div>
         </div>
        </Container>
