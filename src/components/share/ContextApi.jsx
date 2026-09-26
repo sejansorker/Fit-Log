@@ -1,20 +1,38 @@
 "use client"
 import axios from 'axios'
 import React, { createContext, useEffect, useState } from 'react'
+
 const ProductApi = createContext()
-const ContextApi = ({children}) => {
-    const [info, setInfo ] = useState([])
-    const getData = ()=>{
-        axios.get("https://api.abcz.workers.dev/api/fitlog").then((response)=>{
-          setInfo(response.data);
-        })
-    }
-    useEffect(()=>{
-         getData()
-    },[])
+const LoadingApi = createContext()   // নতুন — loading state এর জন্য
+
+const ContextApi = ({ children }) => {
+  const [info, setInfo] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const getData = () => {
+    axios.get("https://api.abcz.workers.dev/api/fitlog")
+      .then((response) => {
+        setInfo(response.data)
+      })
+      .catch((error) => {
+        console.error("Failed to fetch workouts:", error)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
-    <ProductApi.Provider value={info}>{children}</ProductApi.Provider>
+    <ProductApi.Provider value={info}>
+      <LoadingApi.Provider value={loading}>
+        {children}
+      </LoadingApi.Provider>
+    </ProductApi.Provider>
   )
 }
 
-export  {ContextApi,ProductApi}
+export { ContextApi, ProductApi, LoadingApi }
