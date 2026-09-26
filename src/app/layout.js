@@ -3,7 +3,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { ContextApi } from "@/components/share/ContextApi";
-
+import { PlanProvider } from '@/components/share/PlanContext'
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,10 +37,11 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <ContextApi>
-         <NavBar/>
-        {children}
-        <Footer/>
-        </ContextApi>
+  <PlanProvider>
+    <NavBar/>
+    {children}
+  </PlanProvider>
+</ContextApi>
         </body>
         
     </html>
