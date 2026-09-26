@@ -31,7 +31,7 @@ const NavBar = () => {
         <li>My Plan</li>
       </ul>
     </div>
-    <div className="flex items-center gap-x-2.5">
+    <div className="flex items-center gap-x-2.5 ">
     <Image
   src="/logo.png"
   alt="Logo"
