@@ -11,7 +11,7 @@ const Library = () => {
   const loading = useContext(LoadingApi)
 
   return (
-    <div className='mb-16' id="library">
+    <div className='mb-16 lg:px-0 px-2' id="library">
       <Container>
         <h3 className='font-bold text-[22px] sm:text-[26px] lg:text-[30px] text-white pb-1'>THE LIBRARY</h3>
         <p className='text-[#9CA3AF] text-[13px] sm:text-[14px] font-normal'>Twelve lifts covering every major muscle group.</p>
@@ -63,7 +63,7 @@ const Library = () => {
                         <Flame size={13} /> {item.caloriesBurned} kcal
                       </span>
                       <span className='flex items-center gap-x-1'>
-                        <Star size={13} className='fill-[#C2F800] text-[#C2F800]' /> {item.rating}
+                        <Star size={13} className=' text-[#C2F800]' /> {item.rating}
                       </span>
                     </div>
                   </div>

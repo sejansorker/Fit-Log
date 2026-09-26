@@ -13,11 +13,10 @@ const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <div className="relative">
+    <div className="relative  border-b-1 border-[rgba(107,114,128,0.48)]">
       <Container>
-        <div className="navbar">
+        <div className="navbar py-5">
           <div className="navbar-start">
-            {/* Mobile toggle button — এখন Link এর ভিতরে না, নিজেই button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="btn btn-ghost lg:hidden"

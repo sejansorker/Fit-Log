@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <div className='lg:py-10 py-4 border-t-1 border-[rgba(107,114,128,0.48)]'>
+    <div className='lg:py-10 lg:px-0 px-1 py-4 border-t-1 border-[rgba(107,114,128,0.48)]'>
       <Container>
         <div className="lg:flex justify-between items-center">
           <div className="">
