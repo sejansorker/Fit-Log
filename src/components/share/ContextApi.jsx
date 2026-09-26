@@ -3,14 +3,14 @@ import axios from 'axios'
 import React, { createContext, useEffect, useState } from 'react'
 
 const ProductApi = createContext()
-const LoadingApi = createContext()   // নতুন — loading state এর জন্য
+const LoadingApi = createContext()   
 
 const ContextApi = ({ children }) => {
   const [info, setInfo] = useState([])
   const [loading, setLoading] = useState(true)
 
   const getData = () => {
-    axios.get("https://api.abcz.workers.dev/api/fitlog")
+    axios.get("https://api.api-store.workers.dev/api/fitlog")
       .then((response) => {
         setInfo(response.data)
       })
@@ -36,3 +36,4 @@ const ContextApi = ({ children }) => {
 }
 
 export { ContextApi, ProductApi, LoadingApi }
+

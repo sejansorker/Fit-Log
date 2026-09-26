@@ -62,8 +62,6 @@ const NavBar = () => {
             </Link>
           </div>
         </div>
-
-        {/* Mobile dropdown menu — এখন state দিয়ে control হচ্ছে */}
         {menuOpen && (
           <ul className="lg:hidden flex flex-col gap-2 bg-[#111] rounded-lg p-4 mb-4">
             <li>

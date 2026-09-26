@@ -21,32 +21,34 @@ const MyPlan = () => {
   return (
     <div className="">
       <Container>
-        <div className="pt-17 pb-30 lg:px-0 px-2">
-          <h1 className="text-white font-bold text-[30px] uppercase pb-2">My Plan</h1>
-          <p className="text-[#9CA3AF] text-sm pt-1 pb-3">
+        <div className="pt-10 sm:pt-17 pb-16 sm:pb-30 lg:px-0 px-3">
+          <h1 className="text-white font-bold text-xl sm:text-2xl md:text-[30px] uppercase pb-2">
+            My Plan
+          </h1>
+          <p className="text-[#9CA3AF] text-xs sm:text-sm pt-1 pb-3">
             Cap of five lifts for today. Finish them, then load more.
           </p>
-          <div className="grid grid-cols-3 w-full gap-4 mt-6 rounded-xl bg-[rgba(156,163,175,0.1)] p-6">
-            <div>
-              <p className="text-[#9CA3AF] text-xs uppercase">Exercises</p>
-              <p className="text-[#C2F800] font-bold text-2xl pt-1">{activeList.length}</p>
+
+          <div className="grid grid-cols-3 w-full gap-2 sm:gap-4 mt-4 sm:mt-6 rounded-xl bg-[rgba(156,163,175,0.1)] p-3 sm:p-6">
+            <div className="min-w-0">
+              <p className="text-[#9CA3AF] text-[10px] sm:text-xs uppercase truncate">Exercises</p>
+              <p className="text-[#C2F800] font-bold text-lg sm:text-2xl pt-1">{activeList.length}</p>
             </div>
-            <div>
-              <p className="text-[#9CA3AF] text-xs uppercase">Minutes</p>
-              <p className="text-white font-bold text-2xl pt-1">{minutes}</p>
+            <div className="min-w-0">
+              <p className="text-[#9CA3AF] text-[10px] sm:text-xs uppercase truncate">Minutes</p>
+              <p className="text-white font-bold text-lg sm:text-2xl pt-1">{minutes}</p>
             </div>
-            <div>
-              <p className="text-[#9CA3AF] text-xs uppercase">Calories</p>
-              <p className="text-white font-bold text-2xl pt-1">{calories}</p>
+            <div className="min-w-0">
+              <p className="text-[#9CA3AF] text-[10px] sm:text-xs uppercase truncate">Calories</p>
+              <p className="text-white font-bold text-lg sm:text-2xl pt-1">{calories}</p>
             </div>
           </div>
 
-          {/* Tabs + Sort */}
-          <div className="flex items-center justify-between mt-6">
-            <div className="inline-flex rounded-lg border border-[rgba(156,163,175,0.2)] bg-[rgba(156,163,175,0.05)] p-1 gap-1">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-6">
+            <div className="inline-flex w-full sm:w-auto rounded-lg border border-[rgba(156,163,175,0.2)] bg-[rgba(156,163,175,0.05)] p-1 gap-1">
               <button
                 onClick={() => setTab('plan')}
-                className={`px-4 py-1.5 rounded-md text-xs font-semibold transition ${
+                className={`flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-md text-xs font-semibold transition whitespace-nowrap ${
                   tab === 'plan'
                     ? 'bg-[rgba(156,163,175,0.15)] text-white border border-[rgba(156,163,175,0.3)]'
                     : 'text-[#9CA3AF] border border-transparent'
@@ -56,7 +58,7 @@ const MyPlan = () => {
               </button>
               <button
                 onClick={() => setTab('saved')}
-                className={`px-4 py-1.5 rounded-md text-xs font-semibold transition ${
+                className={`flex-1 sm:flex-none px-3 sm:px-4 py-1.5 rounded-md text-xs font-semibold transition whitespace-nowrap ${
                   tab === 'saved'
                     ? 'bg-[rgba(156,163,175,0.15)] text-white border border-[rgba(156,163,175,0.3)]'
                     : 'text-[#9CA3AF] border border-transparent'
@@ -66,12 +68,12 @@ const MyPlan = () => {
               </button>
             </div>
 
-            <div className="relative">
-              <span className="text-[#9CA3AF] text-xs mr-2">Sort By</span>
+            <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
+              <span className="text-[#9CA3AF] text-xs shrink-0">Sort By</span>
               <select
                 value={sortKey}
                 onChange={(e) => setSortKey(e.target.value)}
-                className="text-white border border-gray-300 text-xs rounded-md py-1.5 pl-3 pr-8 outline-none appearance-none bg-transparent"
+                className="text-white border border-gray-300 text-xs rounded-md py-1.5 pl-3 pr-8 outline-none appearance-none bg-transparent w-full sm:w-auto"
               >
                 <option value="duration" className="bg-[#1a1a1a] text-white">Duration</option>
                 <option value="caloriesBurned" className="bg-[#1a1a1a] text-white">Calories</option>
@@ -80,11 +82,9 @@ const MyPlan = () => {
             </div>
           </div>
 
-          {/* List */}
           <div className="mt-5 flex flex-col gap-3">
             {sortedList.length === 0 ? (
-              // Empty state
-              <div className="text-center py-16 rounded-xl border border-[rgba(156,163,175,0.2)]">
+              <div className="text-center py-16 px-4 rounded-xl border border-[rgba(156,163,175,0.2)]">
                 <h3 className="text-white font-bold uppercase">Nothing Here Yet</h3>
                 <p className="text-[#9CA3AF] text-sm mt-2 max-w-xs mx-auto">
                   Browse the library and add a lift to get today moving.
@@ -102,17 +102,38 @@ const MyPlan = () => {
                 return (
                   <div
                     key={item.id}
-                    className="flex items-center gap-4 rounded-xl bg-[rgba(156,163,175,0.1)] p-3"
+                    className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 rounded-xl bg-[rgba(156,163,175,0.1)] p-3"
                   >
-                    {/* Thumbnail */}
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="h-16 w-16 rounded-lg object-cover shrink-0"
-                    />
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="h-14 w-14 sm:h-16 sm:w-16 rounded-lg object-cover shrink-0"
+                      />
+                      <div className="flex-1 min-w-0 sm:hidden">
+                        <h3
+                          className={`font-bold uppercase text-sm ${
+                            isDone ? 'text-[#9CA3AF] line-through' : 'text-white'
+                          }`}
+                        >
+                          {item.name}
+                        </h3>
+                        <p className="text-[#9CA3AF] text-xs">{item.equipment}</p>
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#9CA3AF] mt-1">
+                          <span className="flex items-center gap-1">
+                            <Clock size={13} /> {item.duration} min
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Flame size={13} /> {item.caloriesBurned} kcal
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Star size={13} className="fill-[#C2F800] text-[#C2F800]" /> {item.rating}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
 
-                    {/* Name + stats */}
-                    <div className="flex-1 min-w-0">
+                    <div className="hidden sm:block flex-1 min-w-0">
                       <h3
                         className={`font-bold uppercase text-sm ${
                           isDone ? 'text-[#9CA3AF] line-through' : 'text-white'
@@ -133,34 +154,35 @@ const MyPlan = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
+
+                    <div className="flex flex-wrap items-center gap-2 shrink-0 w-full sm:w-auto">
                       <Link
                         href={`/workout/${item.id}`}
-                        className="rounded-md border border-[rgba(156,163,175,0.3)] px-3 py-1.5 text-xs font-semibold text-white"
+                        className="flex-1 sm:flex-none text-center rounded-md border border-[rgba(156,163,175,0.3)] px-3 py-1.5 text-xs font-semibold text-white"
                       >
                         View Details
                       </Link>
 
-                     {tab === 'plan' && (
-  <button
-    onClick={() => !isDone && toggleDone(item.id)}
-    disabled={isDone}
-    className={`flex items-center gap-1 rounded-md px-3 py-1.5 text-xs font-semibold ${
-      isDone
-        ? 'bg-[#C2F800]/20 text-[#C2F800] cursor-not-allowed opacity-70'
-        : 'bg-[#C2F800] text-black cursor-pointer'
-    }`}
-  >
-    <Check size={13} />
-    {isDone ? 'Done' : 'Mark as Done'}
-  </button>
-)}
+                      {tab === 'plan' && (
+                        <button
+                          onClick={() => !isDone && toggleDone(item.id)}
+                          disabled={isDone}
+                          className={`flex-1 sm:flex-none flex items-center justify-center gap-1 rounded-md px-3 py-1.5 text-xs font-semibold ${
+                            isDone
+                              ? 'bg-[#C2F800]/20 text-[#C2F800] cursor-not-allowed opacity-70'
+                              : 'bg-[#C2F800] text-black cursor-pointer'
+                          }`}
+                        >
+                          <Check size={13} />
+                          {isDone ? 'Done' : 'Mark as Done'}
+                        </button>
+                      )}
 
                       <button
                         onClick={() =>
                           tab === 'plan' ? removeFromPlan(item.id) : removeFromSaved(item.id)
                         }
-                        className="h-7 w-7 flex items-center justify-center rounded-md border border-[rgba(156,163,175,0.3)] text-[#9CA3AF]"
+                        className="h-7 w-7 flex items-center justify-center rounded-md border border-[rgba(156,163,175,0.3)] text-[#9CA3AF] shrink-0"
                       >
                         <X size={14} />
                       </button>
@@ -177,5 +199,4 @@ const MyPlan = () => {
 }
 
 export default MyPlan
-
 

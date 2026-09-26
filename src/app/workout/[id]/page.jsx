@@ -14,15 +14,13 @@ const WorkoutDetails = () => {
   const loading = useContext(LoadingApi);
   const { addToPlan, addToSaved } = usePlan();
 
-  // Loading state — skeleton placeholder
   if (loading) {
     return (
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-10 pb-16 animate-pulse">
-          {/* Image skeleton */}
+
           <div className="w-full h-[350px] lg:h-[735px] bg-[rgba(156,163,175,0.15)] rounded-xl" />
 
-          {/* Right side skeleton */}
           <div>
             <div className="h-8 w-2/3 bg-[rgba(156,163,175,0.15)] rounded-md" />
             <div className="h-4 w-full bg-[rgba(156,163,175,0.1)] rounded-md mt-4" />
